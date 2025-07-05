@@ -4,18 +4,21 @@
 - 최적화 이론에 규제, 모멘텀, 학습률, 멈춤(stop)조건과 같은 제어를 추가하여 알고리즘 구축 
 - 사람은 알고리즘을 설계하고 데이터를 수집함
 
-![[Pasted image 20250702125018.png]]
+![image](https://github.com/user-attachments/assets/e33e3958-d867-4785-8f8a-b1c90f9dbfd2)
+
 
 # 벡터
 
 - 샘플을 특징 벡터로 표현한다.
 	ex) Iris 데이터에서 꽃 받침의 길이, 꽃 받침의 너비, 꽃잎의 길이, 꽃잎의 너비라는 4개의 특징이 각각 5.1, 3.5, 1.4, 0.2인 샘플
 
-![[Pasted image 20250702125131.png]]
+![image](https://github.com/user-attachments/assets/71f2947f-984a-433a-98da-6fcf19c7042f)
+
 
 - 여러 개의 특징 벡터를 첨자로 구분한다.
 
-![[Pasted image 20250702125207.png]]
+![image](https://github.com/user-attachments/assets/d681c6db-2b9b-402e-8b3d-89a772ac272b)
+
 
 # 행렬
 
@@ -23,13 +26,15 @@
 
 ex) Iris 데이터에 있는 150개의 샘플을 설계 행렬 X로 표현
 
-![[Pasted image 20250702125311.png]]
+![image](https://github.com/user-attachments/assets/bc77e94a-1d26-4725-ade3-e45ae62a5f62)
+
 
 행렬을 사용하면 **복잡한 연산을 간결한 수식**으로 표현할 수 있으며, **벡터의 내적**, **행렬 곱**, **전치(transpose)** 같은 기본 연산을 통해 다양한 알고리즘의 수학적 기초를 구성할 수 있다. 특히 **다변수 선형회귀, 신경망의 순전파/역전파, PCA 같은 차원 축소 기법**에서도 행렬 연산이 핵심 역할을 한다.
 
 ex) 다항식의 행렬 표현
 
-![[Pasted image 20250702125455.png]]
+![image](https://github.com/user-attachments/assets/d392f7cf-77f6-4f30-8716-ae46febf52f5)
+
 
 또한, 행렬은 **벡터의 집합**이라는 의미를 갖기 때문에 **고차원 벡터 공간**을 구성하거나, **선형 결합**을 통해 새로운 벡터를 생성하는 데 활용된다. 이처럼 행렬은 단순한 숫자 모음이 아니라, **데이터의 구조와 연산의 규칙을 수학적으로 표현하는 수단**으로, 기계학습과 딥러닝의 거의 모든 알고리즘에 필수적으로 사용된다.
 
@@ -100,7 +105,8 @@ print("동일한가?:", np.allclose(left, right))
 
 **전치행렬**이란, 행렬의 **행(row)과 열(column)을 뒤바꾼 것** 수학적으로는 `A^T` 또는 `A.T` 로 표현
 
-![[Pasted image 20250702125353.png]]
+![image](https://github.com/user-attachments/assets/9d73c71a-a3c2-41e0-ad7e-2d97f4443e7d)
+
 
 아래 예제를 통해 전치 행렬을 구해보라.
 
@@ -118,7 +124,8 @@ print("전치 행렬 A^T:\n", A_T)
 
 - 이외 특수한 행렬들
 
-![[Pasted image 20250702125517.png]]
+![image](https://github.com/user-attachments/assets/b1dc533b-fba5-4f77-9fbb-2e0ef4358e75)
+
 
 # 텐서
 
@@ -205,7 +212,8 @@ pip은 명령어가 간단하고 가볍기 때문에 초보자부터 전문가�
 다음 명령어를 통해 구글 코랩(Coolab)에서 pip를 통해 numpy를 설치해보자.
 `!pip install <패키지명>`
 
-![[Pasted image 20250702155652.png]]
+![image](https://github.com/user-attachments/assets/d4047b0e-60e2-474b-9fac-ce12acd1c8b1)
+
 
 ### 주요 명령어
 
@@ -577,40 +585,4 @@ cf) 행렬의 곱은 A@B 형식으로 @를 사용
 
 ## 과제 2) pandas를 활용한 데이터 분석 실습
 
-다음 조건에 따라 `student_data.csv` 파일을 만들어 저장하고, 이 파일을 불러온 후 다양한 pandas 기능을 활용하여 분석하시오.
-
-### (1) 데이터프레임 만들기
-
-아래 데이터를 사용하여 `pandas.DataFrame`을 만들고, **"평균" 열을 추가**하여 `student_data.csv`로 저장하시오.  저장 시 인덱스는 제외(index=False).
-
-|이름|반|국어|수학|
-|---|---|---|---|
-|철수|A|90|85|
-|영희|A|82|88|
-|민수|B|75|80|
-|지민|B|92|90|
-|현우|A|85|79|
-
-- 평균은 (국어 + 수학)/2로 계산
-- 파일명은 `student_data.csv`
-
-### (2) 파일 불러오기
-
-`student_data.csv` 파일을 **상대 경로로 불러와서** 새로운 데이터프레임 `df`에 저장하시오.
-
-### (3) 조건 필터링
-
-`df`에서 평균 점수가 **85점 이상인 학생**만 출력하시오.
-
-### (4) 정렬
-
-수학 점수를 기준으로 **내림차순 정렬**된 결과를 출력하시오.
-
-### (5) 그룹별 평균
-
-반(`반`)별 평균 점수를 구하시오.
-
-### (6) 새로운 학생 추가
-
-다음 데이터를 포함하는 학생을 `df`에 추가하고, 다시 전체 데이터프레임을 출력하시오.  
-단, 평균 점수도 함께 계산하여 포함할 것.
+위의 강의자료 복습

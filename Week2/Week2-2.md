@@ -374,13 +374,13 @@ Feature와 Label을 구분할 때 데이터셋 내에서 어떤 열이 정답처
 ---
 ## 분류(Classification) 문제 – 주요 지표
 
-| 지표 | 설명 | 특징 |
-|------|------|------|
-| **Accuracy** | 전체 예측 중에서 정답 비율 | 간단하지만 불균형 데이터에 취약 |
-| **Precision** | Positive로 예측한 것 중 실제 Positive 비율 | False Positive를 줄이는 데 중요 |
-| **Recall** | 실제 Positive 중에서 맞춘 비율 | False Negative를 줄이는 데 중요 |
-| **F1-score** | Precision과 Recall의 조화 평균 | Precision과 Recall이 모두 중요할 때 사용 |
-| **Confusion Matrix** | 예측과 실제값을 비교한 2x2 표 | TP, FP, FN, TN 확인 가능 |
+| 지표                   | 설명                               | 특징                             |
+| -------------------- | -------------------------------- | ------------------------------ |
+| **Accuracy**         | 전체 예측 중에서 정답 비율                  | 간단하지만 불균형 데이터에 취약              |
+| **Precision**        | Positive로 예측한 것 중 실제 Positive 비율 | False Positive를 줄이는 데 중요       |
+| **Recall**           | 실제 Positive 중에서 맞춘 비율            | False Negative를 줄이는 데 중요       |
+| **F1-score**         | Precision과 Recall의 조화 평균         | Precision과 Recall이 모두 중요할 때 사용 |
+| **Confusion Matrix** | 예측과 실제값을 비교한 정사각행렬표              | TP, FP, FN, TN 확인 가능           |
 
 - 혼동 행렬 (Confusion Matrix) : 혼동 행렬은 실제 정답과 모델이 예측한 결과를 비교하여, 모델이 얼마나 잘 분류했는지를 직관적으로 이해할 수 있도록 도와준다.
 
@@ -454,6 +454,9 @@ scikit-learn은 Python 기반의 대표적인 머신러닝 라이브러리로, �
 ---
 # 8️⃣ 실습: Iris 분류
 
+---
+### 1. Iris 데이터셋 소개
+
 Iris란 머신러닝에서 자주 사용되는 꽃 품종 분류용 예제 데이터셋을 말한다.
 
 주요 특징은 다음과 같다.
@@ -461,11 +464,17 @@ Iris란 머신러닝에서 자주 사용되는 꽃 품종 분류용 예제 데�
 - 4개의 특징(feature): 꽃받침 길이, 꽃받침 너비, 꽃잎 길이, 꽃잎 너비
 - 3개의 클래스(target): [0: Setosa, 1: Versicolor, 2: Virginica]
 
+Iris 데이터셋을 이용해 3종류의 꽃을 4개의 수치로 분류하는 실습을 진행해보자.
+
 ---
+### 2. 데이터 로드 
+
 Iris 데이터를 불러오기 위해 `scikit-learn`의 `datasets` 모듈에서 `load_iris` 함수를 불러온다. `load_iris()`는 붓꽃(Iris) 데이터셋을 로드하는 함수로, 이 데이터셋은 머신러닝에서 자주 사용되는 대표적인 분류용 예제 데이터이다. `load_iris(as_frame=True)`를 사용하면 데이터를 **pandas의 DataFrame 형태로 반환**해주므로, 이후 데이터 처리나 시각화 작업이 훨씬 수월해진다. 불러온 결과는 `iris`라는 변수에 저장되며, 여기에는 특징 데이터(`data`)와 정답 레이블(`target`)이 함께 포함되어 있다.
 
 - `X = iris.data` : 꽃잎과 꽃받침의 길이/너비 정보를 담은 **입력 데이터(Feature)**
+	- `x` : (150,4) 크기의 특성 데이터
 - `y = iris.target` : 해당 꽃이 어떤 품종인지 알려주는 **출력 데이터(Label)**
+	- `y` : (150,) 크기의 정답 라벨
 
 ```python
 from sklearn.datasets import load_iris
@@ -473,24 +482,36 @@ iris = load_iris(as_frame=True)
 X, y = iris.data, iris.target
 ```
 ---
+### 3. 데이터 분할
+
 아래 코드는 전체 데이터를 학습용(train)과 테스트용(test)으로 나누는 과정이다.
 `train_test_split` 함수를 사용해 `X`와 `y`를 각각 80%는 학습용(`X_train`, `y_train`), 20%는 테스트용(`X_test`, `y_test`)으로 분리한다.
-
-- `stratify=y`는 클래스 비율이 학습/테스트에 동일하게 유지되도록 한다.
-- `random_state=42`는 랜덤 분할 결과를 고정시켜, 실행할 때마다 동일한 결과가 나오게 한다.
 
 ```python
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, stratify=y, random_state=42
-)
+    X, y, test_size=0.2, stratify=y, random_state=42)
 ```
+
+- 전체 데이터 150개 중 → 학습용: 120개, 테스트용: 30개
+- `stratify=y` 덕분에 **3개 품종이 고르게 분배**됩니다. (편향 없음)
+- `random_state=42`는 랜덤하게 섞더라도 항상 같은 결과를 얻기 위해 사용합니다.
+
 ---
+### 4. 전처리 + KNN 모델을 파이프라인으로 구성
+
 아래 코드는 **전처리와 모델을 하나의 파이프라인으로 연결**해주는 작업이다.
-- `StandardScaler()`는 데이터를 정규화(평균 0, 표준편차 1)해주는 전처리 도구이다.
-- `KNeighborsClassifier(n_neighbors=3)`는 KNN 분류 모델로, 주변 3개의 데이터를 기준으로 분류한다.
-- `Pipeline`을 사용하면 전처리와 모델 학습을 연속적으로 수행할 수 있다.
-- 마지막 `pipe.fit()`은 학습 데이터를 넣어 파이프라인 전체를 학습시킨다.
+- `StandardScaler()`  
+    → 각 특성(feature)을 평균 0, 표준편차 1로 스케일링  
+    → KNN은 거리 기반이기 때문에 `StandardScaler`로 정규화 필요
+
+- `KNeighborsClassifier(n_neighbors=3)`  
+    → 새로운 샘플이 오면 **가장 가까운 3개**의 이웃을 찾아 다수결로 클래스를 결정  
+    → `n_neighbors=3`은 하이퍼파라미터이며, 모델 복잡도에 영향을 준다.
+
+- `Pipeline([...])`  
+    → 전처리와 분류기를 **하나의 묶음으로 연결**한다.  
+    → `.fit()` 호출 시 `StandardScaler` → `KNN` 순으로 자동 실행된다.
 
 ```python
 from sklearn.preprocessing import StandardScaler
@@ -498,36 +519,45 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline
 
 pipe = Pipeline([
-    ("scaler", StandardScaler()),
-    ("knn",    KNeighborsClassifier(n_neighbors=3))
+    ("scaler", StandardScaler()), # 데이터 정규화,
+    ("knn",    KNeighborsClassifier(n_neighbors=3)) # KNN 모델(K=3)
 ])
 pipe.fit(X_train, y_train)
 ```
 
 ---
-아래 코드는 **학습한 모델을 평가하는 단계**이다.
-- `pipe.predict(X_test)`는 테스트 데이터를 이용해 예측 결과를 생성한다.
-- `accuracy_score()`는 예측값과 실제값을 비교해 **정확도**를 계산한다.
-- `classification_report()`는 정밀도, 재현율, F1-score 등의 지표를 출력한다.
-- `confusion_matrix()`는 예측 결과와 실제 정답 간의 **혼동 행렬**을 보여준다.
+### 5. 모델 평가 (테스트 데이터 기준)
+
+아래 코드는 **학습한 모델을 평가하는 단계**이다. 성능은 `accuracy`, `F1-score`, `confusion matrix` 등으로 평가한다.
+
+- `pipe.predict(X_test)`  
+→ 학습된 모델로 테스트 데이터를 분류한다.  
+→ `y_pred`는 예측한 품종 라벨 리스트이다.
 
 ```python
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 y_pred = pipe.predict(X_test)
 
 print("정확도:", accuracy_score(y_test, y_pred))
+print("\n 분류 리포트:")
 print(classification_report(y_test, y_pred))
+print(" 혼동 행렬:")
 print(confusion_matrix(y_test, y_pred))
 ```
 
---- 
+- `accuracy_score()`  
+    → 전체 중 맞춘 비율. 예: 30개 중 29개 맞으면 96.6%
 
-이 코드는 **하이퍼파라미터 튜닝**을 위한 과정이다.
-- `GridSearchCV`는 지정된 파라미터 범위(`n_neighbors`)에 대해 모델을 여러 번 학습하고 성능을 비교한다.
-- `param_grid`는 `KNeighborsClassifier`의 이웃 수를 1, 3, 5, 7로 설정해 시도한다.
-- `cv=5`는 5겹 교차검증을 수행하여 각 설정의 평균 성능을 평가한다.
-- `grid.best_params_`는 성능이 가장 좋았던 파라미터 값을 출력한다.
-- `grid.best_score_`는 해당 파라미터 조합에서의 평균 정확도를 보여준다.
+- `classification_report()`  
+    → 각 클래스별 **정밀도(Precision), 재현율(Recall), F1-score** 출력
+
+- `confusion_matrix()`  
+    → 3x3 행렬이 출력됨
+
+--- 
+### 6. GridSearchCV를 활용한 하이퍼파라미터 튜닝
+
+`GridSearchCV`는 내부적으로 학습 데이터를 5조각으로 나누어 한 조각을 검증에 쓰고, 나머지로 학습하여 **교차 검증(cv)** 을 수행한다. KNN의 이웃 수 `n_neighbors`를 바꿔가며 성능을 비교한다.
 
 ```python
 from sklearn.model_selection import GridSearchCV
@@ -539,6 +569,10 @@ grid.fit(X_train, y_train)
 print("최적 파라미터:", grid.best_params_)
 print("검증 정확도:", grid.best_score_)
 ```
+
+- `cv=5`: 학습 데이터를 5조각으로 나눠 5번 교차 검증
+- `grid.best_params_` : 가장 좋은 성능의 `K` 값을 알려줌
+- `grid.best_score_` : 해당 파라미터일 때의 5번 교차 검증한 평균 정확도
 
 ---
 
@@ -555,6 +589,7 @@ print("검증 정확도:", grid.best_score_)
 ```python
 from sklearn.datasets import load_wine
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report
 
 wine = load_wine(as_frame=True)
 X_train, X_test, y_train, y_test = train_test_split(
@@ -567,6 +602,7 @@ for k in [1, 3, 5]:
     model.fit(X_train, y_train)
     acc = model.score(X_test, y_test)
     print(f"k={k}, 정확도={acc:.3f}")
+    print(classification_report(y_test, model.predict(X_test)))
 ```
 
 > 추가 도전 

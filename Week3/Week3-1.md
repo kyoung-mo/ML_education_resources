@@ -266,7 +266,8 @@ plt.show()
 ## 인공지능, 머신러닝, 딥러닝 개념 다시 정리
 
 
-![[Pasted image 20250709133743.png]]
+![image](https://github.com/user-attachments/assets/89225a57-f1ea-4f43-aca7-e12630696991)
+
 
 - 깊은 학습(deep learning) : 입력된 데이터를 기반으로 특징과 매핑을 신경망을 활용한 학습 방법
 
@@ -277,7 +278,8 @@ plt.show()
 ---
 # 생물학적 뉴런이란?
 
-![[Pasted image 20250709174426.png]]
+![image](https://github.com/user-attachments/assets/a7996f33-3ace-41bb-a1d1-83f3446996b5)
+
 
 생물학적 뉴런은 **사람이나 동물의 뇌를 구성하는 기본적인 정보 처리 단위**이다.  
 뉴런은 외부 또는 다른 뉴런으로부터 신호를 받아들이고, 이를 처리한 후 다음 뉴런으로 전달하는 역할을 수행한다.

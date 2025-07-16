@@ -227,15 +227,192 @@ $$
 
 
 
+# 3️⃣ Pytorch
+
+### 🔹 Pytorch란?
+
+PyTorch는 Facebook에서 개발한 **딥러닝 프레임워크**로, 유연하고 사용하기 쉬운 인터페이스를 제공한다.  
+Python과의 호환성이 뛰어나고, 연구 및 실험 단계에서 널리 활용되며, 학습, 모델링, 추론 등을 위한 다양한 기능을 포함한다.
+
+공식 사이트: [https://pytorch.org](https://pytorch.org)
+
+### 🔹 주요 특징
+
+- **동적 계산 그래프 (Dynamic Computational Graph)**  
+  런타임에 계산 그래프가 정의되어, 디버깅과 실험에 매우 유리하다.
+
+- **NumPy와 유사한 텐서(Tensor) 연산 지원**  
+  GPU 가속이 가능한 텐서 연산 구조 제공.
+
+- **autograd를 통한 자동 미분 지원**  
+  역전파 계산을 자동으로 처리함.
+
+- **torch.nn 모듈을 통한 신경망 구성 지원**  
+  다양한 레이어, 손실함수, 최적화 알고리즘 제공.
+
+- **GPU 지원 (CUDA)**  
+  `.to("cuda")` 또는 `.cuda()`를 통해 간단하게 GPU 연산 수행 가능.
+
+  
+### 🔹 기본 예제
+
+```python
+import torch
+
+# 텐서 정의
+x = torch.tensor([1.0, 2.0, 3.0], requires_grad=True)
+w = torch.tensor([0.1, 0.2, 0.3], requires_grad=True)
+b = torch.tensor(0.5, requires_grad=True)
+
+# 선형 연산
+y = x @ w + b  # 또는 torch.dot(x, w) + b
+
+# 손실 함수 예: 제곱 오차
+loss = (y - 1.0) ** 2
+
+# 역전파
+loss.backward()
+
+# 기울기 확인
+print(w.grad)
+print(b.grad)
+```
+
+- Pytorch 프레임워크를 사용하기 위해서는 `import torch` 를 해주고 사용 가능하다.
+
+- 텐서 정의
+	- `requires_grad=True`는 해당 텐서가 **미분 대상**임을 의미함.
+	- 학습 대상인 입력 `x`, 가중치 `w`, 편향 `b`를 선언.
+ 
+- 선형 연산
+	- `@` 연산자는 벡터 내적(dot product)을 의미.
+	- 결과 `y`는 스칼라 값.
+
+- 손실 함수
+	- 원하는 정답 `1.0`과의 **제곱 오차(MSE)** 를 사용.
+ 
+- 역전파 수행
+	- `loss`를 기준으로 모든 파라미터에 대해 **기울기(gradient)** 를 자동으로 계산.
+	- 계산된 결과는 `w.grad`, `b.grad`에 저장됨.
+
+- 기울기 출력
+	- 각 파라미터에 대해 손실 함수의 **기울기(gradient)** 가 출력됨.
+
+이와 같이 Pytorch의 `.backward()` 한 줄로 자동 미분을 수행할 수 있으며,  
+자세한 내용은 [https://pytorch.org](https://pytorch.org) 에서 공식 문서를 참고하면 된다.
+
+---
+
+### 🔹 수동 미분과 자동 미분 비교의 필요성
+딥러닝에서 가장 핵심적인 학습 과정은 역전파(backpropagation) 를 통한 기울기 계산이다. 이 기울기는 모델의 파라미터를 어떻게 조정해야 손실(loss)이 줄어들지를 알려주는 중요한 정보이다.
+
+아래 실습에서는 넘파이(Numpy) 를 사용해 직접 수동으로 미분식을 구현한 방식과,
+파이토치(PyTorch) 의 autograd 기능을 이용한 자동 미분(automatic differentiation) 방식을 비교하여,
+두 방식이 실제로 유사한 결과를 낸다는 점을 실습을 통해 확인해보고자 한다.
 
 
+### 🔹 넘파이 vs 파이토치 2단 MLP 비교
 
+#### 1️. 넘파이로 (수동 미분)
 
+---
+```python
+import numpy as np
 
+def sigmoid(x): return 1 / (1 + np.exp(-x))
+def d_sigmoid(x): return sigmoid(x) * (1 - sigmoid(x))
 
+x = np.array([1.0, 0.5])
+y_true = np.array([1.0])
 
-### 🔹
+W1 = np.array([[0.1, 0.2], [0.3, 0.4]])
+b1 = np.array([0.1, 0.2])
+W2 = np.array([[0.5], [0.6]])
+b2 = np.array([0.3])
 
-### 🔹
+z1 = np.dot(x, W1) + b1
+a1 = sigmoid(z1)
+z2 = np.dot(a1, W2) + b2
+a2 = sigmoid(z2)
+loss = 0.5 * np.sum((a2 - y_true)**2)
 
-3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣
+d_loss_a2 = a2 - y_true
+d_loss_z2 = d_loss_a2 * d_sigmoid(z2)
+d_loss_W2 = np.outer(a1, d_loss_z2)
+d_loss_b2 = d_loss_z2
+
+d_loss_a1 = np.dot(W2, d_loss_z2)
+d_loss_z1 = d_loss_a1 * d_sigmoid(z1)
+d_loss_W1 = np.outer(x, d_loss_z1)
+d_loss_b1 = d_loss_z1
+
+print("NumPy dW1:", d_loss_W1)
+print("NumPy dW2:", d_loss_W2)
+```
+
+---
+
+#### 2. 수치 미분으로 검증
+
+```python
+def numerical_gradient(f, W, h=1e-5):
+    grad = np.zeros_like(W)
+    for i in range(W.shape[0]):
+        for j in range(W.shape[1]):
+            tmp = W[i, j]
+            W[i, j] = tmp + h
+            fxh1 = f()
+            W[i, j] = tmp
+            fx = f()
+            grad[i, j] = (fxh1 - fx) / h
+    return grad
+
+def loss_func_w1():
+    z1 = np.dot(x, W1) + b1
+    a1 = sigmoid(z1)
+    z2 = np.dot(a1, W2) + b2
+    a2 = sigmoid(z2)
+    return 0.5 * np.sum((a2 - y_true)**2)
+
+num_grad_W1 = numerical_gradient(loss_func_w1, W1)
+print("수치 미분 dW1:", num_grad_W1)
+print("해석 미분 dW1:", d_loss_W1)
+```
+
+---
+
+#### 3. 파이토치로 (자동 미분)
+
+```python
+import torch
+
+W1 = torch.tensor([[0.1, 0.2], [0.3, 0.4]], requires_grad=True)
+b1 = torch.tensor([0.1, 0.2], requires_grad=True)
+W2 = torch.tensor([[0.5], [0.6]], requires_grad=True)
+b2 = torch.tensor([0.3], requires_grad=True)
+x = torch.tensor([1.0, 0.5])
+y_true = torch.tensor([1.0])
+
+def sigmoid(x): return 1 / (1 + torch.exp(-x))
+
+z1 = torch.matmul(x, W1) + b1
+a1 = sigmoid(z1)
+z2 = torch.matmul(a1, W2) + b2
+a2 = sigmoid(z2)
+loss = 0.5 * ((a2 - y_true) ** 2).sum()
+loss.backward()
+
+print("PyTorch dW1:", W1.grad)
+print("PyTorch dW2:", W2.grad)
+```
+
+# 4️⃣ 과제
+
+### 🔹 과제 1) PyTorch에서 제공하는 Optimizer 종류 조사
+
+아래 내용을 위주로 조사해보시면 됩니다.
+
+- 대표적인 옵티마이저 SGD, Adam, RMSprop, Adagrad 등의 알고리즘 소개
+- 각 옵티마이저의 동작 방식 요약 (수식 포함 가능)
+- 각 옵티마이저의 장단점 2가지 이상 서술
+- 어떤 상황에서 어떤 옵티마이저를 선택하는 것이 좋은지 정리

@@ -198,3 +198,7 @@ print("학습된 w, b:", model.weight.item(), model.bias.item())
 
 ✅ **환경**: Python 3.x, Google Colab, numpy, PyTorch ≥ 2.0  
 설치: `!pip install numpy torch torchvision -q`
+
+
+---
+

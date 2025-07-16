@@ -56,7 +56,8 @@ $$
 
 - ReLU 함수의 **부드러운 근사(smooth approximation)**
 - $x$가 작을수록 0에 가까워지고, $x$가 클수록 $x$에 가까워짐
-- 항상 미분 가능하며, 미분하면 sigmoid 함수가 됨:
+- 항상 미분 가능하며, 미분하면 sigmoid 함수가 됨
+
 $$
 \frac{d}{dx} \text{SoftPlus}(x) = \sigma(x)
 $$

@@ -5,6 +5,8 @@
 ---
 #### 1. GELU (Gaussian Error Linear Unit)
 
+<img width="701" height="432" alt="image" src="https://github.com/user-attachments/assets/41d58407-b0a2-437b-a51c-648bb00146f4" />
+
 $$
 	{GELU}(x) = x \cdot \Phi(x)
 $$
@@ -31,6 +33,8 @@ $$
 
 - #### 2. Softmax
 
+<img width="645" height="571" alt="image" src="https://github.com/user-attachments/assets/e58fd965-b561-4a49-a781-9812c46fbd5f" />
+
 $$
 	{Softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}
 $$
@@ -49,6 +53,8 @@ $$
 ---
 
 - #### 3. SoftPlus
+
+<img width="833" height="653" alt="image" src="https://github.com/user-attachments/assets/f1380be0-4c2d-4a36-9c78-93b6072eccd1" />
 
 $$
 	{SoftPlus}(x) = \ln(1 + e^x)
@@ -74,6 +80,8 @@ $$
 
 - #### 4. Leaky ReLU (Leaky Rectified Linear Unit)
 
+<img width="838" height="637" alt="image" src="https://github.com/user-attachments/assets/741db624-50c5-45b9-8916-29a1a26492f2" />
+
 $$
 	{LeakyReLU}(x) =
 \begin{cases}
@@ -96,6 +104,8 @@ $$
 ---
 
 - #### 5. Gaussian 함수
+
+<img width="651" height="508" alt="image" src="https://github.com/user-attachments/assets/272b3327-23c8-447f-b5bc-a530176e8d7e" />
 
 $$
 f(x) = e^{-x^2}

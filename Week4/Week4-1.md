@@ -41,6 +41,201 @@
   이후 **심층 신경망(Deep Neural Network)** 으로 확장되는 기반이 마련되었다.
 
 ---
-# 2️⃣ 
+# 2️⃣ 역전파 알고리즘
+
+<img width="726" height="362" alt="image" src="https://github.com/user-attachments/assets/3962ca53-ee1c-49a5-9d94-80051e0b2eb9" />
+
+
+- 입력 $x_1$ = 0.5, $x_2$ = 0.3 이라 가정 
+- 간단한 다층 신경망 2,2,1 가정
+- 활성화 함수는 시그모이드 함수로 가정
+- 손실함수는 MSE로 가정 ( $\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$ )
+- 모든 가중치를 랜덤하게 배치, lr = 0.1로 가정
+
+### 🔹 역전파를 이용한 신경망 학습 (3단계)
+- 1단계 : feedforward 순전파
+- 2단계 : 손실 계산
+- 3단계 : backpropagation 역전파
+
+1단계부터 3단계를 반복하여 최적의 파라미터를 찾아가는 과정을 학습 (training)이라 부르기도 하고 최적화 (Optimization) 과정이라고 부르기도 함
+
+---
+
+### 🔹 1단계 : feedforward 순전파
+
+<img width="613" height="376" alt="image" src="https://github.com/user-attachments/assets/9f29aaa8-4a80-4970-bc3a-bd36ea3a4b16" />
+
+- 입력값에 대한 연결 가중치와 곱을 합하여 은닉층 노드에 넣는다.
+
+<img width="571" height="452" alt="image" src="https://github.com/user-attachments/assets/ff32f7b9-1edf-4cd9-84d6-9a06d4d2b523" />
+
+- 위 단계에서 넣었던 값을 은닉층 노드의 활성화 함수에 넣는다.
+
+$$
+z_1 = x_1 w_1 + x_2 w_3 = 0.5 \times 0.7 + 0.3 \times 0.4 = 0.47
+$$
+
+$$
+h_1 = \sigma(z_1) = 0.615
+$$
+
+$$
+z_2 = x_1 w_2 + x_2 w_4 = 0.5 \times 0.3 + 0.3 \times 0.6 = 0.33
+$$
+
+$$
+h_2 = \sigma(z_2) = 0.582
+$$
+
+<img width="578" height="330" alt="image" src="https://github.com/user-attachments/assets/17440895-3275-4f83-a203-cafa6e90ce43" />
+
+- 그 다음 연결 가중치와의 곱을 합하여 출력층 뉴런에 넣는다.
+
+$$
+h_1 = \sigma(z_1) = 0.615
+$$
+
+$$
+h_2 = \sigma(z_2) = 0.582
+$$
+
+$$
+z_3 = h_1 w_5 + h_2 w_6 = 0.615 \times 0.55 + 0.582 \times 0.45 = 0.6
+$$
+
+<img width="578" height="333" alt="image" src="https://github.com/user-attachments/assets/2a040d08-e52b-41d6-b32f-e7d8642fbf7b" />
+
+- 마지막으로 출력층의 시그모이드 함수로 최종 출력값을 구한다.
+
+$$
+z_3 = h_1 w_5 + h_2 w_6 = 0.615 \times 0.55 + 0.582 \times 0.45 = 0.6
+$$
+
+$$
+o_1 = \sigma(z_3) = 0.645
+$$
+
+
+### 🔹 2단계 : 손실 계산
+
+<img width="1010" height="345" alt="image" src="https://github.com/user-attachments/assets/3e57fa61-45b3-4abd-adea-b505bef84422" />
+
+- MSE를 사용하기로 가정했기 때문에 이 공식을 이용 -> $\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$
+- 출력층 뉴런이 1개이기 때문에 n=1 -> $\text{MSE} = \frac{1}{1}  (y_1 - \hat{y}_1)^2$
+
+- $\hat{y}$ 값은 0.645이며, y값(실제값)을 1이라고 가정하면 오차의 값은
+
+$$
+\text{MSE} = \frac{1}{1}  (1 - 0.645)^2 = 0.126
+$$
+
+- 따라서 오차 C = 0.126이다.
+
+### 🔹 3단계 : backpropagation 역전파
+
+<img width="584" height="370" alt="image" src="https://github.com/user-attachments/assets/64b68adf-ad1d-4199-a092-2857d1fd4529" />
+
+- 우선 역전파를 이용해 가중치 w5를 업데이트 해보자.
+
+- 경사하강법의 가중치 업데이트 공식은 다음과 같다. 여기서 C는 Cost function(손실함수)를 의미한다.
+
+$$
+\text{새 연결강도} = \text{현 연결강도} + {\color{red}(-\nabla C)} \times \text{학습률}
+$$
+
+
+- w5의 경우에는 그림과 같이 편미분 값으로 바꿀 수 있다.
+
+$$
+\text{새 연결강도} = \text{현 연결강도} + {\color{red}\frac{\partial C}{\partial w_5}} \times \text{학습률}
+$$
+
+- 여기서 $\frac{\partial C}{\partial w_5}$를 바로 구할 수 없기 때문에 아는 값들을 이용하여 계산을 위해 편미분(Chain Rule)을 사용한다.
+
+---
+- Chain Rule?
+
+<img width="692" height="226" alt="image" src="https://github.com/user-attachments/assets/7cfdddb4-3fe6-4f0a-b279-f43a4ac6d954" />
+
+  
+- 우리가 어떤 두 변수의 미분값을 구하려 하나 그 관계를 모를 때, 각각 아는 미분 값들로 연쇄적으로 확장시켜 나가면 어려운 문제도 부분들을 해결하여 전체를 해결할 수 있다. 각각의 변수들이 사라지면 결국 구하고자 하는 관계만 남는 원리를 이용한다.
+
+- 예를 들어 이런 문제가 있다고 하자.
+	-  치타는 사자보다 2배 빠르고, 
+	   사자는 곰보다 2배 빠르고, 
+     곰은 사람보다 1.5배 빠르다고 할 때, 
+     치타는 사람보다 몇 배 빠른가?
+
+$$
+\frac{d 치타}{d 사람} = \frac{d 치타}{d 사자} \cdot \frac{d 사자}{d 곰} \cdot \frac{d 곰}{d 사람}
+$$
+
+-  직관적으로 2 x 2 x 1.5 = 6배 빠름을 알 수 있다. 이것이 연쇄 미분의 개념이다.
+
+---
+
+- 다시 돌아와서 가중치 w5와 손실간의 변화량을 부분들로 나누면 다음과 같다.
+
+$$
+\frac{\partial C}{\partial w_5} = \frac{\partial C}{\partial o_1} \cdot \frac{\partial o_1}{\partial z_3} \cdot \frac{\partial z_3}{\partial w_5}
+$$
+
+- $\frac{\partial C}{\partial o_1}$ 계산
+
+$$
+C = (y - o_1)^2
+$$
+
+$$
+\frac{\partial C}{\partial o_1} = -2(y - o_1)
+$$
+
+$$
+\frac{\partial C}{\partial o_1} = -2(1 - 0.645) = -0.71
+$$
+
+- $\frac{\partial o_1}{\partial z_3}$ 계산 : sigmoid의 미분 값과 같으므로
+
+$$
+\frac{\partial o_1}{\partial z_3} = o(z)(1 - o(z)) = o_1(1-o_1) = 0.645(1-0.645) = 0.229
+$$
+
+- $\frac{\partial z_3}{\partial w_5}$ 계산
+
+$$
+z_3 = h_1 w_5 + h_2 w_6
+$$
+
+$$
+\frac{\partial z_3}{\partial w_5} = \frac{\partial}{\partial w_5}(h_1 w_5 + h_2 w_6) = h_1 = 0.615
+$$
+
+- $\frac{\partial c}{\partial w_5} = -0.71 \cdot 0.229 \cdot 0.615 = \color{red}{-0.01}$
+
+- 경사강법의 가중치 업데이트 공식에 따라서 
+
+$$
+\text{새 연결강도} = \text{현 연결강도} + \frac{\partial C}{\partial w_5} \times \text{학습률}
+$$
+
+$$
+\text{새 연결강도} = 0.55 + \text{-0.01} \times \text{0.1} = 0.551
+$$
+
+이를 통해 w5를 업데이트 할 수 있고, 나머지 가중치 또한 이와 같은 방식으로 업데이트 가능하다.
+
+
+
+
+
+
+
+
+
+
+
+### 🔹
+
+### 🔹
 
 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣

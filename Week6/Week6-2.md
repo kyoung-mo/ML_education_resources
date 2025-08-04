@@ -72,7 +72,8 @@ RNN은 **시간 축을 따라 연속적인 연산**을 수행하면서,
 ---
 ### 🔹 시각화
 
-![[Pasted image 20250804113250.png]]
+<img width="840" height="414" alt="image" src="https://github.com/user-attachments/assets/9ddde9f7-32da-4cac-80b2-6c570f7b779d" />
+
 
 - 입력: $[x_{t-2}, x_{t-1}, x_t, \dots]$
 - 순차적으로 hidden state ($h_t$) 를 계산하면서 정보 전달  
@@ -115,7 +116,8 @@ $$
 RNN의 순환 구조는 시간에 따라 **반복적으로 연결**되는 형태이다.  
 이를 **시간축으로 펼치면** 아래 그림처럼 **각 시점마다 동일한 연산이 반복되는 구조**로 표현할 수 있다.
 
-![[Pasted image 20250804110120.png]]
+<img width="845" height="330" alt="image" src="https://github.com/user-attachments/assets/ac7bfe12-b5bb-4798-9e9b-c261b368069d" />
+
 
 
 - 모든 시점에서 **같은 가중치**(예: $W_{xh}, W_{hh}, W_{hy}$)를 공유하여 학습

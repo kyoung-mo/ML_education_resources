@@ -119,8 +119,8 @@ YOLO는 다양한 컴퓨터 비전 작업을 지원:
 - 데이터: AWS Deepracer 2023 Sydney 대회 영상 편집본.  
 
 #### 1.5.2. 데이터 구조
-- **data 폴더**: 협업을 위해 data_1.mp4, data_2.mp4, data_3.mp4  
-- **test.mp4**: 모델 훈련 후 성능 확인용.  
+- [data 폴더](https://drive.google.com/drive/folders/1-T5kjsCSoStV56HLEZ1xD6bk_d88A3m3): 협업을 위해 data_1.mp4, data_2.mp4, data_3.mp4  
+- [test.mp4](https://drive.google.com/file/d/1-Q0Q7FMnlFKx7BrrHja161ljY-sDCDkQ/view): 모델 훈련 후 성능 확인용.  
 
 ---
 

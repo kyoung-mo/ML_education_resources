@@ -1,9 +1,13 @@
 # YOLO로 배우는 '컴퓨터 비전'
 
 ---
-
-## [1] 강의 개요
-본 과정은 실습 및 실무 중심으로 구성되어 있습니다.
+### 실습 ipynb
+- [Classification.ipynb](https://colab.research.google.com/drive/1y0jJZCjuQQy7Eyfsu_6rDmtvWpnulwlZ?usp=sharing#scrollTo=w62wU9n75okk)
+- [Object_Detection.ipynb](https://colab.research.google.com/drive/1K02VZTbERJUwxE2ftVavae2j8QQN408P?usp=sharing)
+- [Instance_Segmentation.ipynb](https://colab.research.google.com/drive/1QkiAkZiQrVvfPacnJOp0p-7m95JCEwzT?usp=sharing)
+- [Keypoints_Detection.ipynb](https://colab.research.google.com/drive/1puFI6NzFrb-PyIaW7YFl75EKCIo6od0Y?usp=sharing)
+- [스트리밍.ipynb](https://colab.research.google.com/drive/1Y1Ou0VVfjuhHrxz_PpLFzqb2HlJ3fWU3?usp=sharing)
+---
 
 ### 1.1. YOLO 와 컴퓨터 비전
 #### 1.1.1. 컴퓨터 비전
@@ -28,11 +32,26 @@
 
 #### 1.1.5. Tasks
 YOLO는 다양한 컴퓨터 비전 작업을 지원:
-- **Object Detection**: 바운딩 박스로 객체 탐지.  
-- **Instance Segmentation**: 객체 윤곽선 파악, 픽셀 단위 영역 분할.  
-- **Classification**: 이미지 전체 분류(예: 고양이, 개, 자동차).  
-- **Pose Estimation / Keypoints Detection**: 관절/포인트 추적 → 자세 분석.  
-- **Oriented Bounding Boxes (OBB)**: 회전된 객체 탐지 (차량, 책, 가방 등).  
+- **Object Detection**: 바운딩 박스로 객체 탐지.
+
+<img width="1920" height="541" alt="image" src="https://github.com/user-attachments/assets/2b222811-f6c8-42c5-b523-42edb195af91" />
+  
+- **Instance Segmentation**: 객체 윤곽선 파악, 픽셀 단위 영역 분할.
+
+<img width="1920" height="541" alt="image" src="https://github.com/user-attachments/assets/4be72cec-13bd-415f-b058-b5164a30a9d0" />
+
+- **Classification**: 이미지 전체 분류(예: 고양이, 개, 자동차).
+
+  <img width="1920" height="540" alt="image" src="https://github.com/user-attachments/assets/f86bc226-0f15-49f6-afc5-57402766fdf2" />
+
+- **Pose Estimation / Keypoints Detection**: 관절/포인트 추적 → 자세 분석.
+
+  <img width="1920" height="541" alt="image" src="https://github.com/user-attachments/assets/9f844559-66a3-414d-846f-0a4119a33a47" />
+
+- **Oriented Bounding Boxes (OBB)**: 회전된 객체 탐지 (차량, 책, 가방 등).
+
+  <img width="640" height="360" alt="image" src="https://github.com/user-attachments/assets/ef8c3e8e-193d-41f0-a684-21a9ddbf2b4e" />
+
 
 ---
 
@@ -42,6 +61,9 @@ YOLO는 다양한 컴퓨터 비전 작업을 지원:
 - 딥러닝과 DNN, CNN, DeepRacer 모델, 딥러닝 이슈  
 
 #### 1.2.2. YOLO의 작동원리 기초
+
+<img width="720" height="447" alt="image" src="https://github.com/user-attachments/assets/696c2f20-039c-4617-aef3-f1d310046331" />
+
 - **그리드 분할**: S × S 그리드 셀로 이미지 나눔.  
 - **빠른 이유**: 1-stage 구조 → RoI 추출 단계 없음.  
 - **작은 객체 약점**: 그리드 셀 대비 작은 물체는 검출 어려움.  
@@ -105,5 +127,8 @@ YOLO는 다양한 컴퓨터 비전 작업을 지원:
 ### 1.6. 기타 학습 링크
 - [IoU와 mAP](https://lynnshin.tistory.com/48)  
 - [오토라벨링과 액티브 러닝](https://ahha.ai/2023/12/19/autolabeling/)  
-- [YOLO의 원리](https://www.youtube.com/watch?v=L0tzmv--CGY)  
+- [YOLO의 원리](https://www.youtube.com/watch?v=L0tzmv--CGY)
+
+---
+
 

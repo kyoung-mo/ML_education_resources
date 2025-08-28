@@ -17,7 +17,8 @@ YOLOv4에서 다양한 트릭과 실험적 비교가 도입되었지만, YOLOv5�
 
 1. **더 빠른 추론 속도**
 
-<img width="1860" height="932" alt="image" src="https://github.com/user-attachments/assets/ee146974-a6cd-4f99-abde-4baaab5423c1" />
+<img width="1860" height="932" alt="image" src="https://github.com/user-attachments/assets/22481aa4-d2a3-4678-a28e-1340cea8d997" />
+
 
    - 공식 수치에 따르면 YOLOv5의 최대 추론 시간은 **이미지당 0.007초**, 즉 **초당 140 FPS**입니다.
    - CPU 환경에서도 이미지 1장당 추론 시간은 **7ms**로, 이는 **140 FPS**를 의미합니다.  
@@ -27,7 +28,8 @@ YOLOv4에서 다양한 트릭과 실험적 비교가 도입되었지만, YOLOv5�
 
 2. **더 작은 모델 크기**
 
-<img width="1053" height="300" alt="image" src="https://github.com/user-attachments/assets/4cc5dc62-7ae1-475e-bf2b-f0eef54bdd51" />
+<img width="1053" height="300" alt="image" src="https://github.com/user-attachments/assets/33989cce-11c3-405c-9f8f-e39a7a9e1dbd" />
+
 
    - YOLOv5의 가중치 파일 크기는 **YOLOv4의 1/9** 수준으로 훨씬 가볍습니다.  
    - 메모리 사용 효율이 뛰어나 다양한 임베디드 환경에 적합합니다.

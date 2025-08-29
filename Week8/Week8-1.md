@@ -2,7 +2,9 @@
 # 저번 수업 복습
 ---
 
-<img width="1305" height="554" alt="image" src="https://github.com/user-attachments/assets/2a4a5b2f-0a07-4abf-bc27-7aae1046cb8f" />
+<img width="1305" height="554" alt="image" src="https://github.com/user-attachments/assets/30504078-c78c-4fb3-9d6e-cf47e16610a3" />
+
+
 
 ### 🔹 Attention의 개념  
 - **Attention** = 인코더와 디코더 **사이**의 가중치 (weight between)  
@@ -17,7 +19,9 @@
 
 ---
 
-<img width="864" height="549" alt="image" src="https://github.com/user-attachments/assets/51397288-a01a-4dde-84dd-1a3421883db5" />
+<img width="864" height="549" alt="image" src="https://github.com/user-attachments/assets/d98ee981-6d1b-4d24-b8b5-ba5065aac50f" />
+
+
 
 ### 🔹 Transformer의 기본 구조: Encoder-Decoder  
 - Transformer는 **인코더(Encoder)**와 **디코더(Decoder)**로 구성  
@@ -35,7 +39,9 @@
 
 ---
 
-<img width="845" height="531" alt="image" src="https://github.com/user-attachments/assets/fc54c997-92b5-4b94-9b84-27cafc4edc0c" />
+<img width="845" height="531" alt="image" src="https://github.com/user-attachments/assets/9667c7b6-8243-4a41-85e0-4581a5518f54" />
+
+
 
 ### 🔹 Transformer의 Encoder-Decoder 다층 구조  
 - 인코더와 디코더는 각각 **N개의 모듈**로 구성되며, 모든 모듈의 **구조는 동일**  
@@ -55,7 +61,8 @@
 
 ---
 
-<img width="817" height="477" alt="image" src="https://github.com/user-attachments/assets/089d72ff-97e6-4504-b1a9-724aad76af93" />
+<img width="817" height="477" alt="image" src="https://github.com/user-attachments/assets/873e9095-07e0-4d53-94e3-d6a8fed67857" />
+
 
 ### 🔹 인코더(Encoder) 내부 구조  
 - 인코더는 두 가지 주요 서브레이어로 구성됨  
@@ -73,7 +80,8 @@
 
 ---
 
-<img width="840" height="544" alt="image" src="https://github.com/user-attachments/assets/e7b5763e-969a-4874-86dd-5dd13ca27738" />
+<img width="840" height="544" alt="image" src="https://github.com/user-attachments/assets/7e9e99d8-e65d-44df-8538-7436e21523a1" />
+
 
 ### 🔹 디코더(Decoder) 내부 구조  
 - 디코더는 다음 세 가지 주요 서브레이어로 구성됨  
@@ -94,8 +102,10 @@
 
 ---
 
-<img width="1173" height="596" alt="image" src="https://github.com/user-attachments/assets/171af84c-0981-4d2b-8d9b-9fe33234522e" />
-<img width="1188" height="605" alt="image" src="https://github.com/user-attachments/assets/ec0eae93-f0fa-4358-8181-aa24d1805d66" />
+<img width="1173" height="596" alt="image" src="https://github.com/user-attachments/assets/2433a345-68a5-4b2e-b35e-637f3f3f3f72" />
+
+<img width="1188" height="605" alt="image" src="https://github.com/user-attachments/assets/9c0fcc62-ceee-4004-aa3b-fabbb05c8831" />
+
 
 
 ### 🔹 Transformer 전체 Encoder-Decoder 구조  
@@ -126,9 +136,12 @@
   
 ---
 
-<img width="1342" height="420" alt="image" src="https://github.com/user-attachments/assets/793488ad-b7c4-4ee5-9cc3-98b47c2f0383" />
-<img width="1327" height="420" alt="image" src="https://github.com/user-attachments/assets/f0dedf3b-d4fe-4505-ba82-b0ca25b93d95" />
-<img width="1330" height="420" alt="image" src="https://github.com/user-attachments/assets/91c34603-ab32-457f-91e7-5fff19029b41" />
+<img width="1342" height="420" alt="image" src="https://github.com/user-attachments/assets/b4939995-2044-45ad-9ac6-f5899e359a5d" />
+
+<img width="1327" height="420" alt="image" src="https://github.com/user-attachments/assets/41271777-28cc-4a6e-a8f6-027ee02d3b11" />
+
+<img width="1330" height="420" alt="image" src="https://github.com/user-attachments/assets/33ec5410-ba19-4da6-afa7-fe1ada090808" />
+
 
 ### 🔹 단어(Token) 형태 데이터를 수치로 변환 (Embedding)  
 - 초기 입력은 **One-Hot Vector** 형태로 표현되며, 단어 사전에 있는 단어 개수(# of vocab)만큼 차원을 가짐  
@@ -147,8 +160,10 @@
 
 ---
 
-<img width="1213" height="429" alt="image" src="https://github.com/user-attachments/assets/fc0d48c4-8e80-41bd-91ea-5748af86bcef" />
-<img width="1300" height="335" alt="image" src="https://github.com/user-attachments/assets/6f1038f9-0e6f-49bd-acee-9c88546faac2" />
+<img width="1213" height="429" alt="image" src="https://github.com/user-attachments/assets/ef7f1749-f0d9-4454-946d-617498cb9d5a" />
+
+<img width="1300" height="335" alt="image" src="https://github.com/user-attachments/assets/c572463f-e4c2-4f1c-856f-4a11a48c64c5" />
+
 
 ### 🔹 단어 간 순차성을 반영하기 위한 기법: Positional Encoding  
 - Transformer는 RNN 계열과 달리 **입력값을 순차적으로 처리하지 않고 병렬 처리**를 수행  
@@ -169,8 +184,10 @@
 
 ---
 
-<img width="1403" height="475" alt="image" src="https://github.com/user-attachments/assets/ca3710cc-65d9-4ec3-a9ae-5f89c92cf43f" />
-<img width="1370" height="423" alt="image" src="https://github.com/user-attachments/assets/22a27a3b-2a96-413a-a0ed-75e88cc3928d" />
+<img width="1403" height="475" alt="image" src="https://github.com/user-attachments/assets/f0feb830-c0da-44e5-8f3c-2625d47c8912" />
+
+<img width="1370" height="423" alt="image" src="https://github.com/user-attachments/assets/222ef91b-2c74-4b80-ba9d-053ff2bfd65a" />
+
 
 ### 🔹 주기함수를 활용한 Positional Encoding 구성  
 - **Sinusoid Positional Encoding**: 사인(sin)과 코사인(cos) 함수를 이용해 위치 정보를 표현  
@@ -197,7 +214,8 @@ $PE_{(pos, 2k+1)} = \cos\left( \frac{pos}{10000^{2k/d_{model}}} \right)$
 
 ---
 
-<img width="663" height="593" alt="image" src="https://github.com/user-attachments/assets/cfeda84d-c948-4fa1-9c1f-26ae6e9c85cf" />
+<img width="663" height="593" alt="image" src="https://github.com/user-attachments/assets/7312e174-e2c8-4543-a2e1-a4663e32de21" />
+
 
 ### 🔹 Positional Encoding의 특성  
 - 가까운 위치의 단어끼리는 **유사도(1 - 거리)** 가 커서 값이 높게 나타남  
@@ -216,7 +234,8 @@ $PE_{(pos, 2k+1)} = \cos\left( \frac{pos}{10000^{2k/d_{model}}} \right)$
 # 이번 주차 수업
 ---
 
-<img width="1194" height="609" alt="image" src="https://github.com/user-attachments/assets/0cc4a671-8b97-4bc8-9c0a-27ceb4e520a5" />
+<img width="1194" height="609" alt="image" src="https://github.com/user-attachments/assets/611be082-64b4-40a5-a259-8e39af0ffc4e" />
+
 
 ### 🔹 Encoder 핵심 구성 요소  
 - **Self-Attention**: 입력 시퀀스 내 토큰 간 관계를 계산하여 문맥 정보 생성  
@@ -227,7 +246,8 @@ $PE_{(pos, 2k+1)} = \cos\left( \frac{pos}{10000^{2k/d_{model}}} \right)$
 - 입력 문장을 **문맥(Context) 벡터**로 변환  
 - 생성된 문맥 벡터는 디코더의 **Encoder-Decoder Attention** 단계로 전달되어 최종 출력 생성에 활용  
 
-<img width="1343" height="310" alt="image" src="https://github.com/user-attachments/assets/87563bbc-418f-425a-9293-51ec3662097f" />
+<img width="1343" height="310" alt="image" src="https://github.com/user-attachments/assets/8cca82f9-8f1d-45be-a3a8-78bdb70339c3" />
+
 
 
 ### 🔹 Encoder: Self-Attention 개요  
@@ -250,7 +270,8 @@ $PE_{(pos, 2k+1)} = \cos\left( \frac{pos}{10000^{2k/d_{model}}} \right)$
 
 ---
 
-<img width="962" height="603" alt="image" src="https://github.com/user-attachments/assets/8d6b6f13-1c11-4138-ac01-6f1a0b8c62cb" />
+<img width="962" height="603" alt="image" src="https://github.com/user-attachments/assets/6ac1f945-fec2-4e4c-abba-285a2a71d870" />
+
 
 ### 🔹 직관적 예시 ("나는 학생이다")  
 1. **Q**: `나는`이 다른 단어(`학생`, `이다`)와 어떤 관계가 있는지 파악  
@@ -260,9 +281,11 @@ $PE_{(pos, 2k+1)} = \cos\left( \frac{pos}{10000^{2k/d_{model}}} \right)$
 
 ---
 
-<img width="1385" height="569" alt="image" src="https://github.com/user-attachments/assets/7fe843d6-a4a9-4ea5-87a2-edd67df25a1e" />
+<img width="1385" height="569" alt="image" src="https://github.com/user-attachments/assets/511a1295-678a-401f-a2b7-bf38d7e4ac6a" />
 
-<img width="1385" height="576" alt="image" src="https://github.com/user-attachments/assets/8ed4a597-318f-491f-aa0c-c8b68d8fd0a7" />
+
+<img width="1385" height="576" alt="image" src="https://github.com/user-attachments/assets/f0d0e434-2d8e-4742-8071-26ff1e24bf11" />
+
 
 ### 🔹 Q, K, V 벡터 생성 과정  
 - 입력 시퀀스 X는 각 단어의 **임베딩 + 위치정보**를 포함한 행렬 (예: 3×4)  
@@ -278,7 +301,8 @@ $PE_{(pos, 2k+1)} = \cos\left( \frac{pos}{10000^{2k/d_{model}}} \right)$
 
 ---
 
-<img width="1327" height="598" alt="image" src="https://github.com/user-attachments/assets/d191e32b-fa17-4674-abf9-c4d4244d50df" />
+<img width="1327" height="598" alt="image" src="https://github.com/user-attachments/assets/f7a1ced6-f9b8-42ff-91d9-7b29c793d0c5" />
+
 
 ### 🔹 Multi-Head Attention 출력 결합 과정  
 - **Multi-Head Attention**에서는 여러 개의 head(예: 8개)를 사용하여 서로 다른 시각에서 Attention을 수행  

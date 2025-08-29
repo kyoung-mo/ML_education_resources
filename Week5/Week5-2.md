@@ -29,7 +29,8 @@
 
 - 사용된 필터의 개수만큼 출력 데이터의 채널수 출력
 
-<img width="798" height="319" alt="image" src="https://github.com/user-attachments/assets/924fc5b5-a353-441d-9cfa-c0de45b9c9ac" />
+<img width="767" height="448" alt="image" src="https://github.com/user-attachments/assets/480ab46e-5b46-4f44-9490-5b7113385914" />
+
 
 
 
@@ -47,7 +48,8 @@ ex) 채널수 3, 크기 5x5 필터 20개, (20, 3, 5, 5)
 입력데이터 (C, H, W) * 필터 (FN, C, FH, FW) => 출력데이터(FN, OH, OW) + 편향 (FN, 1, 1) => (FN, OH, OW)
 형상이 다른 블록의 덧셈은 넘파이의 브로드캐스트 기능으로 쉽게 구현이 가능하다.
 
-<img width="798" height="319" alt="image" src="https://github.com/user-attachments/assets/bf62f708-4e10-49ad-9740-6bc4b5a5c8d5" />
+<img width="798" height="319" alt="image" src="https://github.com/user-attachments/assets/e6e4fa40-d0ad-4f99-9178-3737f56a32a8" />
+
 
 
 ### 🔹 배치 처리

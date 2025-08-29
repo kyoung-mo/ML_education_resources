@@ -8,7 +8,8 @@
 - 채널 쪽으로 특징 맵이 여러 개 있다면 입력 데이터와 필터의 합성곱 연산을 채널마다 수행하고, 그 결과를 더해서 하나의 출력을 얻는다.
 - 3차원의 합성곱 연산에서 주의할 점은 입력데이터의 채널수와 필터의 채널수가 같아야 한다.
 
-<img width="685" height="937" alt="image" src="https://github.com/user-attachments/assets/8c5f7d21-54cd-4719-bc3e-8bd02b579e06" />
+<img width="685" height="937" alt="image" src="https://github.com/user-attachments/assets/df887164-afef-4779-b04c-28d029951bd6" />
+
 
 ### 🔹 블록으로 생각하기
 
@@ -18,7 +19,8 @@
   - FH : Filter Height
   - FW : filter Width
 
-<img width="746" height="235" alt="image" src="https://github.com/user-attachments/assets/0d556009-d3a7-419d-917b-823572cf5473" />
+<img width="746" height="235" alt="image" src="https://github.com/user-attachments/assets/2dfc64da-7ce7-4f45-89e5-bb177da297ef" />
+
 
 ---
 
@@ -27,7 +29,9 @@
 
 - 사용된 필터의 개수만큼 출력 데이터의 채널수 출력
 
-<img width="767" height="448" alt="image" src="https://github.com/user-attachments/assets/d4beb84c-7e19-4113-b8ab-e5a206a1df2c" />
+<img width="798" height="319" alt="image" src="https://github.com/user-attachments/assets/924fc5b5-a353-441d-9cfa-c0de45b9c9ac" />
+
+
 
 - 입력데이터 (C, H, W) * 필터 (C, FH, FW, FN) = 출력데이터(FN, OH, OW)
 - 여기서 필터를 FN개 적용하면 출력 맵도 FN개 생성된다. 
@@ -52,7 +56,8 @@ ex) 채널수 3, 크기 5x5 필터 20개, (20, 3, 5, 5)
 - 완전 연결 신경망을 구현하면서는 이 방식을 지원하여 처리 효율을 높이고, 미니배치 방식의 학습도 지원하였다.
 - 합성곱 연산도 마찬가지로 배치 처리를 지원하며, 각 계층을 흐르느 데이터의 차원을 하나 늘려 4차원 데이터로 저장한다.
 
-<img width="912" height="310" alt="image" src="https://github.com/user-attachments/assets/509337ca-8cc0-464b-91de-268bab50bd6f" />
+<img width="912" height="310" alt="image" src="https://github.com/user-attachments/assets/9f6874b6-1837-4575-b4a8-e203efa2573d" />
+
 
 - 이처럼 데이터는 4차원 형상을 가진 채 각 계층을 타고 흐른다.
 - 여기에서 주의할 점으로는 신경망에 4차원 데이터가 하나 흐를 때마다 데이터 N개 대한 합성곱 연산이 이뤄진다는 것이다.
@@ -64,7 +69,8 @@ ex) 채널수 3, 크기 5x5 필터 20개, (20, 3, 5, 5)
 - 최대 풀링(Max Pooling)은 대상 영역에서 최댓값을 취하는 연산인 반면, 평균 풀링(Average Pooling)은 대상 연역에서 평균을 계산한다.
 - 이미지 인식 분야에서는 주로 최대 풀링을 사용한다.
 
-<img width="880" height="354" alt="image" src="https://github.com/user-attachments/assets/3c6b12af-8f36-440a-86a1-d058593acb93" />
+<img width="880" height="354" alt="image" src="https://github.com/user-attachments/assets/473976d4-94aa-4a2a-b868-7c19308e9bae" />
+
 
 - 풀링 계층의 특징(3)
   - 1. 학습해야 할 매개변수가 없다.
@@ -75,7 +81,8 @@ ex) 채널수 3, 크기 5x5 필터 20개, (20, 3, 5, 5)
   - 3. 입력의 변화에 영향을 적게 받는다. (강건하다)
        - 입력데이터가 조금 변해도 풀링의 결과는 잘 변하지 않는다.
  
-<img width="850" height="215" alt="image" src="https://github.com/user-attachments/assets/efcfcbbc-2994-4cf6-8c37-e5cae6d3d642" />
+<img width="850" height="215" alt="image" src="https://github.com/user-attachments/assets/011e1eb7-9b89-4d41-affd-2645c2350e05" />
+
 
 
 
@@ -113,7 +120,8 @@ x[0.0].shape    # (28,28)
 ```
 
 
-<img width="708" height="473" alt="image" src="https://github.com/user-attachments/assets/07947b3a-09c0-4e76-a6b6-fbe2eae3ab5d" />
+<img width="708" height="473" alt="image" src="https://github.com/user-attachments/assets/ed53727e-d8af-4db9-ae5a-b3d99b21fdd3" />
+
 
 
 - 첫 번째 데이터의 첫 채넣의 공간 데이터에 접근
@@ -140,13 +148,15 @@ x[0,0]    # 또는 x[0][0]
 - 아래 그림과 같이 3차원 입력 데이터에 im2col을 적용하면 2차원 행렬로 바뀐다.
 - 정확히는 배치 안의 데이터 수까지 포함한 4차원 데이터를 2차원으로 변환한다.
 
-<img width="773" height="343" alt="image" src="https://github.com/user-attachments/assets/b533b4a9-cdcc-43b6-8d73-4e4f1d5b0802" />
+<img width="773" height="343" alt="image" src="https://github.com/user-attachments/assets/b99628e5-902f-43f7-82e1-e1e4d6e803ba" />
+
 
 - im2col은 필터링 하기 좋게 입력 데이터를 전개합니다.
 - 구체적으로는 아래 그림과 같이 입력데이터에서 필터를 적용하는 영역(3차원 블록)을 한 줄로 늘어 놓는다.
 - 이 전개를 필터를 적용하는 모든 영역에서 수행하는 것이 im2col이다.
 
-<img width="766" height="341" alt="image" src="https://github.com/user-attachments/assets/abd38370-bfc8-48df-ac30-5565b97eaba1" />
+<img width="766" height="341" alt="image" src="https://github.com/user-attachments/assets/8595a7f9-212b-40c3-b4a7-ce5a6536dbff" />
+
 
 그림에서는 보기에 좋게끔 스트라이드를 크게 잡아 필터의 적용 영역이 겹치지 않도록 했지만, 실제 상황에서는 영역이 겹치는 경우가 대부분이다.
 필터 적용 영역이 겹치게 되면 im2col로 전개한 후의 원소 수가 원래 블록의 원소 수보다 많아진다.
@@ -158,7 +168,8 @@ im2col은 'image to column' 즉 이미지에서 행렬로라는 뜻으로, 딥�
 im2col로 입력 데이터를 전개한 다음에는 합성곱 계층의 필터(가중치)를 1열로 전개하고, 두 행렬의 곱을 계산하면 된다.
 이는 완전연결 계층의 Affine 계층에서 한 것과 거의 같다.
 
-<img width="762" height="441" alt="image" src="https://github.com/user-attachments/assets/5b3a1785-e79e-45bc-8548-1bc2cb5e3fa1" />
+<img width="762" height="441" alt="image" src="https://github.com/user-attachments/assets/4fd34bb6-fa66-47db-b84b-adc50577b778" />
+
 
 필터를 세로로 1열로 전개하고, im2col이 전개한 데이터와 행렬 곱을 계산하고, 마지막으로 출력 데이터를 변형한다.
 위 그림과 같이 im2col 방식으로 출력한 결과는 2차원 행렬이다.
@@ -273,11 +284,13 @@ class Convolution:
 단, 풀링의 경우엔 채널 쪽이 독립적이라는 점이 합성곱 계층 때와 다르다.
 구체적으로는 아래 그림과 같이 풀링 적용 영역을 채널마다 독립적으로 계산한다.
 
-<img width="758" height="630" alt="image" src="https://github.com/user-attachments/assets/ff956fd7-7b5a-4a97-93db-1cd31c02c9dc" />
+<img width="758" height="630" alt="image" src="https://github.com/user-attachments/assets/11baa779-c926-4996-82fd-f2706a830293" />
+
 
 일단 이렇게 전개한 후, 전개한 행렬에서 행별 최댓값을 구하고 적절한 형상으로 성형한다.
 
-<img width="767" height="372" alt="image" src="https://github.com/user-attachments/assets/89cdf050-5704-4fd5-96be-2687a5f72350" />
+<img width="767" height="372" alt="image" src="https://github.com/user-attachments/assets/5eee0161-f9a9-4080-9c6e-c130acf5d8a3" />
+
 
 이상이 풀링 계층의 forward 처리 흐름이고, 이를 파이썬으로 구현하면 다음과 같다.
 
@@ -474,7 +487,8 @@ CNN을 구성하는 합성곱 계층은 입력으로 받은 이미지 데이터�
 필터의 크기가 5X5이고 채널이 1개라는 것은 이 필터를 1채널의 회색조 이미지로 시각화할 수 있다는 뜻이다.
 그럼 합성곱 계층(1층) 필터를 이미지로 나타내보면 다음과 같다다.
 
-<img width="780" height="276" alt="image" src="https://github.com/user-attachments/assets/aa4de598-8606-43ca-943e-73f140fd1d71" />
+<img width="780" height="276" alt="image" src="https://github.com/user-attachments/assets/01332899-2611-460c-9221-9a149f9dddd4" />
+
 
 학습 전 필터는 무작위로 초기화되고 있어 흑백의 정도에 규칙성이 없다.
 한편, 학습을 마친 필터는 규칙성이 있는 이미지화 되었다.
@@ -484,7 +498,8 @@ CNN을 구성하는 합성곱 계층은 입력으로 받은 이미지 데이터�
 그것은 에지와 블롭(국소적으로 덩어리진 영역) 등을 보고 있다.
 가령 왼쪽 절반이 흰색이고 오른쪽 절반이 검은색인 필터는 아래 그림과 같이 세로 방향의 에지에 반응하는 필터이다.
 
-<img width="760" height="422" alt="image" src="https://github.com/user-attachments/assets/29f13bd6-a6c4-40a4-803a-1e24c0e507d3" />
+<img width="760" height="422" alt="image" src="https://github.com/user-attachments/assets/ea1b0d0a-2524-403f-b9b8-35613f70010d" />
+
 
 위 그림은 학습된 필터 2개를 선택하여 입력 이미지에 합성곱 처리를 한 결과로, '필터 1'은 세로 에지에 반응하며 '필터 2'는 가로 에지에 반응하는 것을 알 수 있다.
  
@@ -503,7 +518,8 @@ CNN을 구성하는 합성곱 계층은 입력으로 받은 이미지 데이터�
 
 블록으로 나타낸 것은 중간 데이터이며, 그 중간 데이터에 합성곱 연산을 연속해서 적용한다.
 
-<img width="792" height="382" alt="image" src="https://github.com/user-attachments/assets/a1d93258-df23-40e3-910a-76723f58393d" />
+<img width="792" height="382" alt="image" src="https://github.com/user-attachments/assets/c037e414-224e-4763-b07e-014e1b5a3530" />
+
 
 딥러닝의 흥미로운 점은 위 그림과 같이 합성곱 계층을 여러 겹 쌓으면, 층이 깊어지면서 더 복잡하고 추상화된 정보가 추출된다는 것이다.
 1번째 층은 에지와 블롭, 3번째 층은 텍스쳐, 5번째 층은 사물의 일부, 마지막 완전연결 계층은 사물의 클래스(개, 자동차 등)에 뉴런이 반응한다.
@@ -522,7 +538,8 @@ CNN 네트워크의 구성은 다양하다.
 LeNet은 손글씨 숫자를 인식하는 네트워크로, 1988년에 제안되었다.
 아래 그림과 같이 합성곱 계층과 풀링 계층(정확히는 단순히 '원소를 줄이기'만 하는 서브샘플링 계층)을 반복하고, 마지막으로 완전연결 계층을 거치면서 결과를 출력한다.
 
-<img width="778" height="235" alt="image" src="https://github.com/user-attachments/assets/f94a70ea-0a04-4d87-9064-b691c1b5b466" />
+<img width="778" height="235" alt="image" src="https://github.com/user-attachments/assets/0287aa53-576c-4833-bf20-f1b58b203ce2" />
+
 
 LeNet과 '현재의 CNN'을 비교하면 몇 가지 면에서 차이가 있다.
 
@@ -537,7 +554,8 @@ LeNet은 서브 샘플링을 하여 중간 데이터의 크기를 줄이지만 �
 LeNet과 비교해 훨씬 최근인 2012년에 발표된 AlexNet은 딥러닝 열풍을 일으키는 데 큰 역할을 했다.
 그림에서 보듯 그 구성은 기본적으로 LeNet과 크게 다르지 않다.
  
-<img width="777" height="273" alt="image" src="https://github.com/user-attachments/assets/36979046-4174-4001-ba45-692bb7e86bae" />
+<img width="777" height="273" alt="image" src="https://github.com/user-attachments/assets/f7e649da-bffe-4e2b-8e76-c719e97457af" />
+
  
 AlexNet은 합성곱 계층과 풀링 계층을 거듭하며 마지막으로 완전연결 계층을 거쳐 결과를 출력한다.
 LeNet에서 큰 구조는 바뀌지 않았지만, AlexNet에서는 다음과 같은 변화를 주었다.

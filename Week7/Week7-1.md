@@ -38,7 +38,8 @@ $y_t = g(h_t)$
 이처럼 **입력, 은닉, 출력 상태**는 시간 축을 따라 반복적으로 연결되어  
 RNN이 **시간적 의존성**을 학습할 수 있도록 돕는다.
 
-<img width="610" height="236" alt="image" src="https://github.com/user-attachments/assets/bf574b33-9569-4a3b-9aa6-63118eed0256" />
+<img width="610" height="236" alt="image" src="https://github.com/user-attachments/assets/7343076e-348b-4510-a2e6-04274285c1b3" />
+
 
 RNN은 히든 노드가 방향을 가진 엣지로 연결되 순환구조를 이루는 인공신경망의 한 종류로, 구조는 위 사진과 같이 나뉜다.
 
@@ -90,7 +91,8 @@ RNN의 순환 구조는 시간에 따라 **반복적으로 연결**되는 형태
 ---
 ### 🔹 기본적인 RNN 셀의 수식 구조
 
-<img width="649" height="380" alt="image" src="https://github.com/user-attachments/assets/bc7bce28-d8aa-4d41-8d23-1cd0a2efd6d5" />
+<img width="649" height="380" alt="image" src="https://github.com/user-attachments/assets/2f15f083-30d2-4f03-9357-22af5641b9e8" />
+
 
 하나의 RNN 셀(Cell)은 아래와 같은 계산을 수행한다.
 
@@ -207,7 +209,8 @@ $$
 
 many - to - one 의 경우 그림과 같이 역전파가 계산된다.
 
-<img width="877" height="373" alt="image" src="https://github.com/user-attachments/assets/5edeb4cf-4ea8-48b3-a84a-fec981a97fe9" />
+<img width="877" height="373" alt="image" src="https://github.com/user-attachments/assets/0a9108da-f0b6-4efe-9f10-9026d084bdcd" />
+
 
 ### 출력층 $W_{hy}$에 대한 손실의 미분
 
@@ -320,7 +323,8 @@ $$
 
 ---
 
-<img width="1153" height="524" alt="image" src="https://github.com/user-attachments/assets/b2db4e2c-bee2-47f6-a078-e28b60d055be" />
+<img width="1153" height="524" alt="image" src="https://github.com/user-attachments/assets/7569ed73-b071-49fe-9821-99f6c0a52eb7" />
+
 
 ---
 
@@ -347,7 +351,8 @@ $$
 LSTM은 입력 $x_t$, 이전 hidden state $h_{t-1}$, 이전 cell state $C_{t-1}$을 받아  
 현재 cell state $C_t$와 hidden state $h_t$를 계산한다.
 
-<img width="1017" height="553" alt="image" src="https://github.com/user-attachments/assets/a5a473ed-d213-4793-9310-8b38827edfac" />
+<img width="1017" height="553" alt="image" src="https://github.com/user-attachments/assets/b40e132d-01c0-4fd4-9298-309ae6cd10cb" />
+
 
 ---
 
@@ -371,7 +376,8 @@ LSTM은 입력 $x_t$, 이전 hidden state $h_{t-1}$, 이전 cell state $C_{t-1}$
 
 ### 🔹 LSTM 연산 과정 요약
 
-<img width="807" height="624" alt="image" src="https://github.com/user-attachments/assets/f374be55-e642-4119-835c-1acab1825b0d" />
+<img width="807" height="624" alt="image" src="https://github.com/user-attachments/assets/8f6e91eb-ede3-4e13-a43e-10d617ba8604" />
+
 
 LSTM은 입력 $x_t$, 이전 상태 $h_{t-1}$, $C_{t-1}$을 기반으로 다음과 같은 순서로 계산된다:
 
@@ -388,7 +394,8 @@ LSTM은 입력 $x_t$, 이전 상태 $h_{t-1}$, $C_{t-1}$을 기반으로 다음�
 
 ##### 2️⃣ Cell state ($C_t$) 업데이트 하기
 
-<img width="1245" height="164" alt="image" src="https://github.com/user-attachments/assets/ed55acc0-34e3-4812-b997-d0a2faae7892" />
+<img width="1245" height="164" alt="image" src="https://github.com/user-attachments/assets/668c3cf2-fe86-4c5f-a320-39f422fe43d7" />
+
 
 - 후보 셀 상태:  
   -  $\tilde{C}_t$
@@ -440,7 +447,10 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 
 ### 🔹 GRU란?
 
-<img width="563" height="361" alt="image" src="https://github.com/user-attachments/assets/30d968cd-8901-4cb0-aff0-419baccb2124" />
+<img width="563" height="361" alt="image" src="https://github.com/user-attachments/assets/701b39b3-1de2-4b8f-98b6-80170ea88ca9" />
+
+
+
 
 - GRU는 LSTM보다 단순하고 계산 효율이 높은 RNN 변형 구조이다.
 - 게이트 구조를 통해 RNN의 기울기 소실 문제를 완화하면서도, LSTM보다 구조가 간단하다.
@@ -450,11 +460,10 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 
 ---
 
----
-
 ### 🔹 GRU의 구성 요소
 
-<img width="1137" height="332" alt="image" src="https://github.com/user-attachments/assets/a3790d40-a95d-4675-9775-b72096682b30" />
+<img width="1137" height="332" alt="image" src="https://github.com/user-attachments/assets/b9b2beff-42cd-496f-9ee4-593927161cc8" />
+
 
 
 | 구성 요소 | 설명 |

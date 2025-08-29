@@ -15,7 +15,8 @@
 
 ---
 
-<img width="1153" height="524" alt="image" src="https://github.com/user-attachments/assets/b2db4e2c-bee2-47f6-a078-e28b60d055be" />
+<img width="1153" height="524" alt="image" src="https://github.com/user-attachments/assets/177a4e7b-bad1-4b22-add1-c5ae432eb5d5" />
+
 
 ---
 
@@ -42,7 +43,8 @@
 LSTM은 입력 $x_t$, 이전 hidden state $h_{t-1}$, 이전 cell state $C_{t-1}$을 받아  
 현재 cell state $C_t$와 hidden state $h_t$를 계산한다.
 
-<img width="1017" height="553" alt="image" src="https://github.com/user-attachments/assets/a5a473ed-d213-4793-9310-8b38827edfac" />
+<img width="1017" height="553" alt="image" src="https://github.com/user-attachments/assets/4699f178-08a3-46d5-bcff-4b18f128d8ec" />
+
 
 ---
 
@@ -66,7 +68,8 @@ LSTM은 입력 $x_t$, 이전 hidden state $h_{t-1}$, 이전 cell state $C_{t-1}$
 
 ### 🔹 LSTM 연산 과정 요약
 
-<img width="807" height="624" alt="image" src="https://github.com/user-attachments/assets/f374be55-e642-4119-835c-1acab1825b0d" />
+<img width="807" height="624" alt="image" src="https://github.com/user-attachments/assets/3beeb615-7b6b-44c2-8bdf-09a8d0654eb8" />
+
 
 LSTM은 입력 $x_t$, 이전 상태 $h_{t-1}$, $C_{t-1}$을 기반으로 다음과 같은 순서로 계산된다:
 
@@ -83,7 +86,8 @@ LSTM은 입력 $x_t$, 이전 상태 $h_{t-1}$, $C_{t-1}$을 기반으로 다음�
 
 ##### 2️⃣ Cell state ($C_t$) 업데이트 하기
 
-<img width="1245" height="164" alt="image" src="https://github.com/user-attachments/assets/ed55acc0-34e3-4812-b997-d0a2faae7892" />
+<img width="1245" height="164" alt="image" src="https://github.com/user-attachments/assets/7742a503-d6c9-46e9-af92-e9641c0c68ae" />
+
 
 - 후보 셀 상태:  
   -  $\tilde{C}_t$
@@ -135,7 +139,8 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 
 ### 🔹 GRU란?
 
-<img width="563" height="361" alt="image" src="https://github.com/user-attachments/assets/30d968cd-8901-4cb0-aff0-419baccb2124" />
+<img width="563" height="361" alt="image" src="https://github.com/user-attachments/assets/df9f3e77-cbca-4e7b-bbd8-c3586c39ae0c" />
+
 
 - GRU는 LSTM보다 단순하고 계산 효율이 높은 RNN 변형 구조이다.
 - 게이트 구조를 통해 RNN의 기울기 소실 문제를 완화하면서도, LSTM보다 구조가 간단하다.
@@ -147,7 +152,8 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 
 ### 🔹 GRU의 구성 요소
 
-<img width="1137" height="332" alt="image" src="https://github.com/user-attachments/assets/a3790d40-a95d-4675-9775-b72096682b30" />
+<img width="1137" height="332" alt="image" src="https://github.com/user-attachments/assets/e35e162e-34b4-477a-9d3e-dc3a8c288e45" />
+
 
 
 | 구성 요소 | 설명 |
@@ -207,7 +213,8 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 # 이번 주차 수업
 ---
 
-<img width="1216" height="476" alt="image" src="https://github.com/user-attachments/assets/1ca3638a-c240-4080-9af9-c586ad8771c5" />
+<img width="1216" height="476" alt="image" src="https://github.com/user-attachments/assets/c2c244c1-ce14-4c5b-8bd6-f76f2dcdec74" />
+
 
 ### 🔹 Attention is All You Need (2017, NeurIPS)  
 - 2024년 11월 기준 **140,000여 회 인용**  
@@ -221,7 +228,8 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 
 ---
 
-<img width="1305" height="554" alt="image" src="https://github.com/user-attachments/assets/2a4a5b2f-0a07-4abf-bc27-7aae1046cb8f" />
+<img width="1305" height="554" alt="image" src="https://github.com/user-attachments/assets/8b160d4e-4024-4fcd-8c2d-3008b4b34d0f" />
+
 
 ### 🔹 Attention의 개념  
 - **Attention** = 인코더와 디코더 **사이**의 가중치 (weight between)  
@@ -236,7 +244,8 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 
 ---
 
-<img width="864" height="549" alt="image" src="https://github.com/user-attachments/assets/51397288-a01a-4dde-84dd-1a3421883db5" />
+<img width="864" height="549" alt="image" src="https://github.com/user-attachments/assets/bcfd85e6-2509-4d81-9b8b-673e63f2eea3" />
+
 
 ### 🔹 Transformer의 기본 구조: Encoder-Decoder  
 - Transformer는 **인코더(Encoder)**와 **디코더(Decoder)**로 구성  
@@ -254,7 +263,8 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 
 ---
 
-<img width="845" height="531" alt="image" src="https://github.com/user-attachments/assets/fc54c997-92b5-4b94-9b84-27cafc4edc0c" />
+<img width="845" height="531" alt="image" src="https://github.com/user-attachments/assets/2d2e3400-15eb-4e64-b0be-82ec9b0f6f93" />
+
 
 ### 🔹 Transformer의 Encoder-Decoder 다층 구조  
 - 인코더와 디코더는 각각 **N개의 모듈**로 구성되며, 모든 모듈의 **구조는 동일**  
@@ -274,7 +284,8 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 
 ---
 
-<img width="817" height="477" alt="image" src="https://github.com/user-attachments/assets/089d72ff-97e6-4504-b1a9-724aad76af93" />
+<img width="817" height="477" alt="image" src="https://github.com/user-attachments/assets/80d0581a-250e-4355-b9eb-cea976307d34" />
+
 
 ### 🔹 인코더(Encoder) 내부 구조  
 - 인코더는 두 가지 주요 서브레이어로 구성됨  
@@ -292,7 +303,8 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 
 ---
 
-<img width="840" height="544" alt="image" src="https://github.com/user-attachments/assets/e7b5763e-969a-4874-86dd-5dd13ca27738" />
+<img width="840" height="544" alt="image" src="https://github.com/user-attachments/assets/c5e8e49d-2f31-4b0d-8081-c6e48bff1256" />
+
 
 ### 🔹 디코더(Decoder) 내부 구조  
 - 디코더는 다음 세 가지 주요 서브레이어로 구성됨  
@@ -313,8 +325,11 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 
 ---
 
-<img width="1173" height="596" alt="image" src="https://github.com/user-attachments/assets/171af84c-0981-4d2b-8d9b-9fe33234522e" />
-<img width="1188" height="605" alt="image" src="https://github.com/user-attachments/assets/ec0eae93-f0fa-4358-8181-aa24d1805d66" />
+<img width="1173" height="596" alt="image" src="https://github.com/user-attachments/assets/31214d8f-445d-4100-88bb-6ed1f023a482" />
+
+---
+<img width="1188" height="605" alt="image" src="https://github.com/user-attachments/assets/f5d8bfdb-fd6f-4f65-b4b6-81502ecc0ea4" />
+
 
 
 ### 🔹 Transformer 전체 Encoder-Decoder 구조  
@@ -345,9 +360,12 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
   
 ---
 
-<img width="1342" height="420" alt="image" src="https://github.com/user-attachments/assets/793488ad-b7c4-4ee5-9cc3-98b47c2f0383" />
-<img width="1327" height="420" alt="image" src="https://github.com/user-attachments/assets/f0dedf3b-d4fe-4505-ba82-b0ca25b93d95" />
-<img width="1330" height="420" alt="image" src="https://github.com/user-attachments/assets/91c34603-ab32-457f-91e7-5fff19029b41" />
+<img width="1342" height="420" alt="image" src="https://github.com/user-attachments/assets/7d14f94c-ba60-48ba-b35c-5c774e2ef9b5" />
+
+<img width="1327" height="420" alt="image" src="https://github.com/user-attachments/assets/c5194bdb-d276-4432-8e79-fd248fa26e07" />
+
+<img width="1330" height="420" alt="image" src="https://github.com/user-attachments/assets/db6b5038-4eb7-492f-a08b-28062a112be4" />
+
 
 ### 🔹 단어(Token) 형태 데이터를 수치로 변환 (Embedding)  
 - 초기 입력은 **One-Hot Vector** 형태로 표현되며, 단어 사전에 있는 단어 개수(# of vocab)만큼 차원을 가짐  
@@ -366,8 +384,10 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 
 ---
 
-<img width="1213" height="429" alt="image" src="https://github.com/user-attachments/assets/fc0d48c4-8e80-41bd-91ea-5748af86bcef" />
-<img width="1300" height="335" alt="image" src="https://github.com/user-attachments/assets/6f1038f9-0e6f-49bd-acee-9c88546faac2" />
+<img width="1213" height="429" alt="image" src="https://github.com/user-attachments/assets/2e104cf7-a2eb-462d-9400-dd30b701aa32" />
+
+<img width="1300" height="335" alt="image" src="https://github.com/user-attachments/assets/b58895f1-e2e4-4dc8-9465-adaa956285d7" />
+
 
 ### 🔹 단어 간 순차성을 반영하기 위한 기법: Positional Encoding  
 - Transformer는 RNN 계열과 달리 **입력값을 순차적으로 처리하지 않고 병렬 처리**를 수행  
@@ -388,8 +408,10 @@ LSTM도 RNN처럼 시간 축을 따라 펼친 후 BPTT (Backpropagation Through 
 
 ---
 
-<img width="1403" height="475" alt="image" src="https://github.com/user-attachments/assets/ca3710cc-65d9-4ec3-a9ae-5f89c92cf43f" />
-<img width="1370" height="423" alt="image" src="https://github.com/user-attachments/assets/22a27a3b-2a96-413a-a0ed-75e88cc3928d" />
+<img width="1403" height="475" alt="image" src="https://github.com/user-attachments/assets/f52b7ca7-672d-4d92-ae04-5afe98604707" />
+
+<img width="1370" height="423" alt="image" src="https://github.com/user-attachments/assets/434659c7-90fb-4454-a3d4-04803e287922" />
+
 
 ### 🔹 주기함수를 활용한 Positional Encoding 구성  
 - **Sinusoid Positional Encoding**: 사인(sin)과 코사인(cos) 함수를 이용해 위치 정보를 표현  
@@ -416,7 +438,8 @@ $PE_{(pos, 2k+1)} = \cos\left( \frac{pos}{10000^{2k/d_{model}}} \right)$
 
 ---
 
-<img width="663" height="593" alt="image" src="https://github.com/user-attachments/assets/cfeda84d-c948-4fa1-9c1f-26ae6e9c85cf" />
+<img width="663" height="593" alt="image" src="https://github.com/user-attachments/assets/0dd3b168-5ea4-4e60-b812-ecdc0031dbb5" />
+
 
 ### 🔹 Positional Encoding의 특성  
 - 가까운 위치의 단어끼리는 **유사도(1 - 거리)** 가 커서 값이 높게 나타남  

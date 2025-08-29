@@ -56,7 +56,8 @@ $$
 - 완전 연결 신경망은 Affine 계층 뒤에 활성화 함수를 갖는 ReLU 계층 (혹은 Sigmoid 계층)이 이어진다.
 - 아래 그림은 Affine-ReLU 조합이 쌓였고, 마지막 5번째 층은 Affine 계층에 이어 소프트맥스 계층에서 최종 결과(확률)를 출력한다.
 
-<img width="904" height="202" alt="image" src="https://github.com/user-attachments/assets/dcbf99e8-ed33-43ab-9c1e-917e7cfde97a" />
+<img width="904" height="202" alt="image" src="https://github.com/user-attachments/assets/aff2e7c4-fc9c-445f-bf21-e755ef2ae3d9" />
+
 
 ### 🔹 합성곱 신경망(convolution neural network: CNN)
 
@@ -64,7 +65,8 @@ $$
 - Affine-ReLU의 연결 -> Conv-ReLU-Pooling 으로 바뀐다.
 - CNN에서는 Affine-ReLU의 구성이 가능하며, 마지막 출력 계층에서는 Affine-Softmax를 그대로 사용할 수 있다.
 
-<img width="901" height="180" alt="image" src="https://github.com/user-attachments/assets/e27405f8-aed4-4938-b854-7a79b2d03cd5" />
+<img width="901" height="180" alt="image" src="https://github.com/user-attachments/assets/7a001683-33f2-4c91-b1eb-ef99d9e8f887" />
+
 
 ### 🔹 합성곱 계층
 
@@ -92,11 +94,13 @@ $$
 - 합성곱 연산은 필터의 윈도우(window)를 일정한 간격으로 이동해가며 입력 데이터에 적용한다.
 - 합성곱의 연산은 단일 곱셈-누산(Fused Multiply-Add, FMA라고 표현)
 
-<img width="596" height="193" alt="image" src="https://github.com/user-attachments/assets/6d8b0abe-c092-4811-9649-5a129739badb" />
+<img width="596" height="193" alt="image" src="https://github.com/user-attachments/assets/0e1827db-fa08-4316-8354-4d9338118f89" />
+
 
 - 합성곱 연산 예시
 
-<img width="751" height="942" alt="image" src="https://github.com/user-attachments/assets/4e67d4f5-ebfb-4dee-b1a0-16b6b947bab6" />
+<img width="751" height="942" alt="image" src="https://github.com/user-attachments/assets/44448ecd-6968-4a94-aab7-0a3fac58c60e" />
+
 
 ---
 
@@ -104,7 +108,8 @@ $$
 - CNN에서는 필터의 매개변수가 그동안의 가중치에 해당하며, CNN에서도 편향이 존재한다.
 - 편향은 항상 하나(1x1)만 존재한다.
 
-<img width="922" height="200" alt="image" src="https://github.com/user-attachments/assets/e69091a4-2c01-454c-8a79-fdf3abacf5bc" />
+<img width="922" height="200" alt="image" src="https://github.com/user-attachments/assets/e0ab773b-c565-4591-9d65-3f2624bccb49" />
+
 
 필터를 적용한 원소에 고정값(편향)을 모두 더해준다.
 
@@ -122,7 +127,8 @@ $$
 - 필터를 적용하는 위치의 간격을 스트라이드라고 한다.
 - 예를 들어 스트라이드를 2로 설정하면 필터를 적용하는 윈도우가 두 칸씩 이동한다.
 
-<img width="764" height="496" alt="image" src="https://github.com/user-attachments/assets/e753d4a3-53c7-4012-a14c-d15937c4ed94" />
+<img width="764" height="496" alt="image" src="https://github.com/user-attachments/assets/bb551118-1577-48f1-9a21-7363b23760ea" />
+
 
 
 ### 🔹 출력의 크기(Output Size)
@@ -130,12 +136,14 @@ $$
 - 입력 크(H, W), 필터 크기(FH, FW), 출력 크기 (OH, OW), 패팅 P, 스트라이트 S
 - 단, 정수로 나눠떨어지는 값이어야 한다는 점을 주의해야 한다. 정수가 아니면 오류를 내는 등의 대응을 해줘야 한다. (가장 가까운 정수로 반올림하는 등, 특별히 에러를 내지 않고 진행하도록 구현하는 경우도 있다)
 
-<img width="463" height="202" alt="image" src="https://github.com/user-attachments/assets/97cacf66-4ddd-45b9-90d8-722f0243b159" />
+<img width="463" height="202" alt="image" src="https://github.com/user-attachments/assets/c8d1b76a-8cca-47eb-9d3c-7f2e9dc57319" />
+
 
 --- 
 예시)
 
-<img width="990" height="373" alt="image" src="https://github.com/user-attachments/assets/11d1600a-8a16-4e3e-b4f1-d5c18bfa933f" />
+<img width="990" height="373" alt="image" src="https://github.com/user-attachments/assets/2d958783-9b85-4a27-98a8-6913382d9785" />
+
 
   1. 입력 크기:4x4, 필터 크기:3x3, 패딩:0, 스트라이드:1 -> 출력 크기=2x2
   2. 입력 크기:5x5, 필터 크기:4x4, 패딩:2, 스트라이드:1 -> 출력 크기=6x6
@@ -153,7 +161,8 @@ $$
 - 채널 쪽으로 특징 맵이 여러 개 있다면 입력 데이터와 필터의 합성곱 연산을 채널마다 수행하고, 그 결과를 더해서 하나의 출력을 얻는다.
 - 3차원의 합성곱 연산에서 주의할 점은 입력데이터의 채널수와 필터의 채널수가 같아야 한다.
 
-<img width="685" height="937" alt="image" src="https://github.com/user-attachments/assets/8c5f7d21-54cd-4719-bc3e-8bd02b579e06" />
+<img width="685" height="937" alt="image" src="https://github.com/user-attachments/assets/895e41f2-8461-44fe-97f3-2c9643f517e5" />
+
 
 ### 🔹 블록으로 생각하기
 
@@ -163,7 +172,8 @@ $$
   - FH : Filter Height
   - FW : filter Width
 
-<img width="746" height="235" alt="image" src="https://github.com/user-attachments/assets/0d556009-d3a7-419d-917b-823572cf5473" />
+<img width="746" height="235" alt="image" src="https://github.com/user-attachments/assets/f82f8233-28f4-4930-b89c-9cb5ce5baee2" />
+
 
 ---
 
@@ -172,7 +182,8 @@ $$
 
 - 사용된 필터의 개수만큼 출력 데이터의 채널수 출력
 
-<img width="767" height="448" alt="image" src="https://github.com/user-attachments/assets/d4beb84c-7e19-4113-b8ab-e5a206a1df2c" />
+<img width="767" height="448" alt="image" src="https://github.com/user-attachments/assets/d73ab8b6-fd1d-42db-b368-9888bcca80c4" />
+
 
 - 입력데이터 (C, H, W) * 필터 (C, FH, FW, FN) = 출력데이터(FN, OH, OW)
 - 여기서 필터를 FN개 적용하면 출력 맵도 FN개 생성된다. 
@@ -188,7 +199,8 @@ ex) 채널수 3, 크기 5x5 필터 20개, (20, 3, 5, 5)
 입력데이터 (C, H, W) * 필터 (C, FH, FW, FN) => 출력데이터(FN, OH, OW) + 편향 (FN, 1, 1) => (FN, OH, OW)
 형상이 다른 블록의 덧셈은 넘파이의 브로드캐스트 기능으로 쉽게 구현이 가능하다.
 
-<img width="798" height="319" alt="image" src="https://github.com/user-attachments/assets/bf62f708-4e10-49ad-9740-6bc4b5a5c8d5" />
+<img width="798" height="319" alt="image" src="https://github.com/user-attachments/assets/48dd2902-f71e-4edf-aea9-ec3ff3ed7264" />
+
 
 
 ### 🔹 배치 처리
@@ -197,7 +209,8 @@ ex) 채널수 3, 크기 5x5 필터 20개, (20, 3, 5, 5)
 - 완전 연결 신경망을 구현하면서는 이 방식을 지원하여 처리 효율을 높이고, 미니배치 방식의 학습도 지원하였다.
 - 합성곱 연산도 마찬가지로 배치 처리를 지원하며, 각 계층을 흐르느 데이터의 차원을 하나 늘려 4차원 데이터로 저장한다.
 
-<img width="912" height="310" alt="image" src="https://github.com/user-attachments/assets/509337ca-8cc0-464b-91de-268bab50bd6f" />
+<img width="912" height="310" alt="image" src="https://github.com/user-attachments/assets/4521ba25-6f61-4abd-8a2e-f2756fac8d86" />
+
 
 - 이처럼 데이터는 4차원 형상을 가진 채 각 계층을 타고 흐른다.
 - 여기에서 주의할 점으로는 신경망에 4차원 데이터가 하나 흐를 때마다 데이터 N개 대한 합성곱 연산이 이뤄진다는 것이다.
@@ -209,7 +222,8 @@ ex) 채널수 3, 크기 5x5 필터 20개, (20, 3, 5, 5)
 - 최대 풀링(Max Pooling)은 대상 영역에서 최댓값을 취하는 연산인 반면, 평균 풀링(Average Pooling)은 대상 연역에서 평균을 계산한다.
 - 이미지 인식 분야에서는 주로 최대 풀링을 사용한다.
 
-<img width="880" height="354" alt="image" src="https://github.com/user-attachments/assets/3c6b12af-8f36-440a-86a1-d058593acb93" />
+<img width="880" height="354" alt="image" src="https://github.com/user-attachments/assets/a209a286-7320-4c67-9e37-eb5a534789b1" />
+
 
 - 풀링 계층의 특징(3)
   - 1. 학습해야 할 매개변수가 없다.
@@ -220,7 +234,8 @@ ex) 채널수 3, 크기 5x5 필터 20개, (20, 3, 5, 5)
   - 3. 입력의 변화에 영향을 적게 받는다. (강건하다)
        - 입력데이터가 조금 변해도 풀링의 결과는 잘 변하지 않는다.
  
-<img width="850" height="215" alt="image" src="https://github.com/user-attachments/assets/efcfcbbc-2994-4cf6-8c37-e5cae6d3d642" />
+<img width="850" height="215" alt="image" src="https://github.com/user-attachments/assets/82b27ba9-a419-4d3d-82d5-fe702c6cf4a7" />
+
 
 
 

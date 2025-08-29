@@ -132,7 +132,8 @@ MLP는 이론적으로 어떤 함수든 근사할 수 있지만,
 ---
 #### 1. 파라미터 폭발 (Parameter Explosion)
 
-<img width="726" height="475" alt="image" src="https://github.com/user-attachments/assets/e3112553-31c5-423d-a171-7a01ed93262d" />
+<img width="726" height="475" alt="image" src="https://github.com/user-attachments/assets/a76a3c84-7c81-44fd-b51a-801de653247c" />
+
 
 #### 🔹 예시 이미지 (16×16 입력 이미지 → MLP 구조)
 
@@ -156,7 +157,8 @@ MLP는 이론적으로 어떤 함수든 근사할 수 있지만,
 ---
 #### 2. 공간 정보 손실 (Loss of Spatial Structure)
 
-<img width="923" height="610" alt="image" src="https://github.com/user-attachments/assets/73efc8f5-1869-46f1-8f1c-94006e90d6f0" />
+<img width="923" height="610" alt="image" src="https://github.com/user-attachments/assets/817c39ec-36ee-4adb-929d-96cd29189573" />
+
 
 #### 🔹 예시 이미지 (대문자 'A' 이미지의 위치 변화)
 
@@ -234,7 +236,8 @@ CNN은 위와 같은 MLP의 한계를 해결하기 위해 고안된 구조이다
 
 ### 🔹 MLP vs CNN 구조 비교
 
-<img width="1046" height="676" alt="image" src="https://github.com/user-attachments/assets/47a679cf-b954-4d75-a766-219a57470f50" />
+<img width="1046" height="676" alt="image" src="https://github.com/user-attachments/assets/e2f61ebf-fc66-4729-abc8-1a8b7c6de99b" />
+
 
 ---
 
@@ -252,7 +255,8 @@ CNN은 위와 같은 MLP의 한계를 해결하기 위해 고안된 구조이다
 
 ### 🔹 CNN 구조의 특징
 
-<img width="733" height="393" alt="image" src="https://github.com/user-attachments/assets/899e658d-0eef-426e-9361-4fd16f94fedd" />
+<img width="733" height="393" alt="image" src="https://github.com/user-attachments/assets/2fddffe9-534e-4649-9648-b2587d491a5a" />
+
 
 
 - **하나의 통합 네트워크**에서 특징 추출부터 분류까지 자동으로 학습함
@@ -276,7 +280,8 @@ CNN은 위와 같은 MLP의 한계를 해결하기 위해 고안된 구조이다
 
 ---
 
-<img width="814" height="319" alt="image" src="https://github.com/user-attachments/assets/5f042013-500d-4910-a93a-b4d022cec58a" />
+<img width="814" height="319" alt="image" src="https://github.com/user-attachments/assets/5f56903a-d153-45c5-999b-8c765a9a762a" />
+
 
 ### 🔹 필터(커널)의 개념
 
@@ -305,7 +310,8 @@ CNN은 위와 같은 MLP의 한계를 해결하기 위해 고안된 구조이다
 
 ### 🔹 패딩(Padding)
 
-<img width="278" height="277" alt="image" src="https://github.com/user-attachments/assets/5404320e-a67b-4a78-90c3-a6121ac819b2" />
+<img width="278" height="277" alt="image" src="https://github.com/user-attachments/assets/3187ba09-8176-4267-a048-d89825b2d360" />
+
 
 - 필터가 가장자리를 완전히 커버하지 못하는 문제를 해결하기 위해,
   입력의 테두리에 **0을 덧붙이는 것**
@@ -318,7 +324,8 @@ CNN은 위와 같은 MLP의 한계를 해결하기 위해 고안된 구조이다
 다음은 입력 크기 5×5, 필터 크기 3×3, 필터 수 1개를 기준으로  
 세 가지 경우에 대한 출력 결과만 정리한 것이다.
 
-<img width="833" height="328" alt="image" src="https://github.com/user-attachments/assets/59852128-9ae7-4da9-85e9-19e8c40e382d" />
+<img width="833" height="328" alt="image" src="https://github.com/user-attachments/assets/92818f28-42b1-4912-8acf-0e00526d35eb" />
+
 
 ---
 
